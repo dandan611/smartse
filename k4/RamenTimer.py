@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
             elif (state == COUNTUP):
                 print('{}秒経過\n'.format(timec))
-                if (timec >= 18):
+                if (timec >= 180):
                     state = 3
                     timec = 0
                     pi.digitalWrite(LED_PIN, pi.HIGH)
