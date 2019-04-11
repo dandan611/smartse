@@ -18,7 +18,7 @@ if __name__ == '__main__':
     pi.pullUpDnControl(SW_PIN, pi.PUD_UP)
     pi.pinMode(BUZZER_PIN, pi.OUTPUT)
 
-    time = 0
+    timec = 0
     state = 1
 
     try:
@@ -29,20 +29,18 @@ if __name__ == '__main__':
                 if (pi.digitalRead(SW_PIN) == pi.LOW):
                     state = 2
 
-                else:
-                    pass
-
                 time.sleep(0.1)
 
             elif (state == COUNTUP):
-                print('{}秒経過\n'.format(time))
-                if (time >= 180):
+                print('{}秒経過\n'.format(timec))
+                if (timec >= 18):
                     state = 3
+                    timec = 0
                     pi.digitalWrite(LED_PIN, pi.HIGH)
                     pi.digitalWrite(BUZZER_PIN, pi.HIGH)
-
-                time.sleep(1.0)
-                time += 1
+                else:
+                    time.sleep(1.0)
+                    timec += 1
 
             elif (state == NOTICE):
                 print("180秒経過しました")
@@ -50,9 +48,10 @@ if __name__ == '__main__':
                     state = 1
                     pi.digitalWrite(BUZZER_PIN, pi.LOW)
                     pi.digitalWrite(LED_PIN, pi.LOW)
+                    time.sleep(1.0)
 
                 else:
-                    if((pi.digitalRead(LED_PIN) == pi.LOW):
+                    if(pi.digitalRead(LED_PIN) == pi.LOW):
                         pi.digitalWrite(LED_PIN, pi.HIGH)
                     else:
                         pi.digitalWrite(LED_PIN, pi.LOW)
