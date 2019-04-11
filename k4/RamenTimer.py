@@ -19,10 +19,10 @@ if __name__ == '__main__':
             if (pi.digitalRead(SW_PIN) == pi.LOW):
                 pi.digitalWrite(LED_PIN, pi.HIGH)
                 pi.digitalWrite(BUZZER_PIN, pi.HIGH)
-    else:
-        pi.digitalWrite(LED_PIN, pi.LOW)
-        pi.digitalWrite(BUZZER_PIN, pi.LOW)
-    time.sleep(0.1)
+            else:
+                pi.digitalWrite(LED_PIN, pi.LOW)
+                pi.digitalWrite(BUZZER_PIN, pi.LOW)
+            time.sleep(0.1)
 
     except KeyboardInterrupt:
         pi.digitalWrite(BUZZER_PIN, pi.LOW)
